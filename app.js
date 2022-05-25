@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
+const compression = require('compression');
 var cookies = require('cookie-parser');
 
 app.use(cookies());
@@ -27,13 +28,13 @@ app.set('views', `${__dirname}/views`);
 
 
 
-
+app.use(compression());
 
  app.use(express.static(__dirname + '/public'));
 
 
  // Middlewares
- app.use(morgan('dev'));
+ //app.use(morgan('dev'));
  app.use(express.json());
  //app.use(express.static(`${__dirname}/public`));
  
@@ -47,11 +48,11 @@ app.use('/users', user_router);
 //     console.log('Hello from Middleware');
 //     next();
 // });
-app.use((req, res, next) => {
-    //req.requesttime = new Date().toISOString();
-    console.log(req.headers);
-    next();
-});
+// app.use((req, res, next) => {
+//     //req.requesttime = new Date().toISOString();
+//     //console.log(req.headers);
+//     next();
+// });
 ////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////

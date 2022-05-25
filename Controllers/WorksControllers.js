@@ -13,7 +13,7 @@ exports.get_works = async (req, res) => {
         let querystr= JSON.stringify(queryobj);
         querystr =querystr.replace(/\b(gt|lt|gte|lte)\b/g,match=>`$${match}`);
         let query =JSON.parse(querystr);
-        console.log(query);
+        //console.log(query);
         let works_data= Works.find(query);
 
         if(req.query.sort){

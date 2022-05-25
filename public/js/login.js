@@ -12,9 +12,8 @@ const login = async (email,password) => {
             window.setTimeout(() => {
                 location.assign('/projects');
               }, 1500);
-           // router.get('/projects',authController.protect,viewsController.projects);
         }
-        console.log(res);
+        //console.log(res);
     }
     catch(err){
         alert(err.response.data.message);
@@ -29,7 +28,6 @@ if(loginform){
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        console.log(email,password);
         login(email,password);
     });
 }

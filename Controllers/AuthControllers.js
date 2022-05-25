@@ -72,28 +72,22 @@ exports.login = async (req, res) => {
         // Remove password from output
         user.password = undefined;
         res
-                .cookie('jwt', token, {
-                expires: new Date(
-                Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-                ),
-                httpOnly: true,
-                secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
-                })
-                .cookie('userID',user._id)
+            .cookie('jwt', token, {
+            expires: new Date(
+            Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+            ),
+            httpOnly: true,
+            secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+            })
 
-                .status(200).json({
-                    status: 'success',
-                    token,
-                    data: {
-                    user
-                    }
-                });
+            .status(200).json({
+                status: 'success'
+            });
 
         
     }
 
     catch (err) {
-        //console.log(JSON.parse(err));
         res
             .status(400)
             .json({
@@ -113,7 +107,6 @@ exports.protect = async (req, res, next) => {
         }
         
         if(req.cookies.jwt){
-            console.log('token received from cookie');
             token = req.cookies.jwt;
         }
 
@@ -165,28 +158,22 @@ exports.restrictTo = (...roles) => {
 }
 
 exports.logout = async (req,res) =>{
-    res.cookie('jwt', 'loggedout', {
-        expires: new Date(Date.now() + 10 * 1000),
-        httpOnly: true
-      });
-      res.status(200).json({ status: 'success' });
-}
-
-// Only for rendered pages, no errors!
-exports.isLoggedIn = async (req, res, next) => {
-    if (req.cookies.jwt) {
-      try {
-        // 1) verify token
-        const decoded = await promisify(jwt.verify)(
-          req.cookies.jwt,
-          process.env.JWT_SECRET
-        );
-  
-        // 2) Check if user still exists
-        const user = await User.findById(decoded.id);
-      } catch (err) {
-        
-      }
+    try{
+        res
+            .cookie('jwt', 'loggedout', {
+                expires: new Date(Date.now() + 10 * 1000),
+                httpOnly: true
+            })
+            .status(200).json({ 
+                status: 'success' 
+            });
     }
-    next();
-  };
+    catch (err) {
+        next(res
+            .status(500)
+            .json({
+                status: err,
+                message: 'no idea'
+            }))
+    }
+}

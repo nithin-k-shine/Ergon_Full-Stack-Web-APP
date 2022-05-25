@@ -60,7 +60,6 @@ exports.project = async (req, res, next) => {
 
     // 2) Check if user still exists
     const user = await USER.findById(decoded.id);
-    console.log(req.param.slug)
     try{
         
         res

@@ -209,7 +209,7 @@ html(lang='en')
                     .modal-body Select "Logout" below if you are ready to end your current session.
                     .modal-footer
                         button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
-                        a.btn.btn-info(href='../../login') Logout
+                        button.btn.btn-info#click Logout
 
         // Bootstrap core JavaScript
         script(src='vendor/jquery/jquery.min.js')
@@ -227,4 +227,7 @@ html(lang='en')
 
         // Page level custom scripts
         script(src='js/demo/datatables-demo.js')
+
+        script(src='js/logout.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js')
 
