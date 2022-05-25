@@ -1,0 +1,252 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        // Favicon
+        link(rel='icon' type='image/x-icon' href='assets/favicon.ico')
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='description' content='Workflow Management System')
+        meta(name='author' content='Akhil R Nair')
+        title Workflow Management System
+        link(href='vendor/fontawesome-free/css/all.min.css' rel='stylesheet' type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+
+        // Custom styles for this template
+        link(href='css/sb-admin-2.min.css' rel='stylesheet')
+
+        // Custom styles for this page
+        link(href='vendor/datatables/dataTables.bootstrap4.min.css' rel='stylesheet')
+        // Font Awesome icons (free version)
+        script(src='https://use.fontawesome.com/releases/v5.15.3/js/all.js' crossorigin='anonymous')
+        // Google fonts
+        link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css')
+        // Core theme CSS (includes Bootstrap)
+        link(href='css/styless.css' rel='stylesheet')
+
+    body#page-top
+        // Page Wrapper 
+        div#wrapper
+    
+            // Sidebar
+            ul.navbar-nav.bg-gradient-info.sidebar.sidebar-dark.accordion#accordionSidebar
+                // Sidebar - Brand
+                a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='#')
+                    .sidebar-brand-icon.rotate-n-15
+                        i.fas.fa-laugh-wink
+                    .sidebar-brand-text.mx-3 work.name
+                
+                // divider
+                hr.sidebar-divider.my-0
+
+                // Nav Item - Dashboard
+                li.nav-item.active
+                    a.nav-link(href='dashboard')
+                        i.fas.fa-fw.fa-wrench
+                        span Dashboard 
+                li.nav-item.active
+                    a.nav-link(href='members')
+                        i.fas.fa-fw.fa-user 
+                        span Project Members
+
+                // Divider
+                hr.sidebar-divider
+
+                // Heading
+                .sidebar-heading #{user.name}
+
+                // Nav Item - Charts
+                li.nav-item
+                    a.nav-link(href='../../projects')
+                        i.fas.fa-fw.fa-chart-area
+                        span Other Projects
+                hr.sidebar-divider
+            // End of Sidebar 
+            // Content Wrapper 
+            .d-flex.flex-column#content-wrapper
+    
+                // Main Content 
+                div#content
+    
+                    // Topbar
+                    nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+                        // Sidebar Toggle (Topbar)
+                        button.btn.btn-link.d-md-none.rounded-circle.mr-3#sidebarToggleTop
+                            i.fa.fa-bars
+                        
+                        // Topbar Search
+                        form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+                            .input-group
+                                input.form-control.bg-light.border-0.small(input type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-info(type='button')
+                                        i.fas.fa-search.fa-sm
+
+                        // Topbar Navbar
+                        ul.navbar-nav.ml-auto
+                            // Nav Item - Search Dropdown (Visible Only XS)
+                            li.nav-item.dropdown.no-arrow.d-sm-none
+                                a.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')#searchDropdown
+                                    i.fas.fa-search.fa-fw 
+                                // Dropdown - Messages
+                                .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby='searchDropdown')
+                                    form.form-inline.mr-auto.w-100.navbar-search
+                                        .input-group 
+                                            .form-control.bg-light.border-0.small(input type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+                                            .input-group-append
+                                            button.btn.btn-info(type='button')
+                                                i.fas.fa-search.fa-sm
+
+
+                            // Nav Item - Alerts 
+                            li.nav-item.dropdown.no-arrow.mx-1
+                                a.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')#alertsDropdown
+                                    i.fas.fa-bell.fa-fw
+                                    // Counter - Alerts 
+                                    span.badge.badge-danger.badge-counter 2+
+                                // Dropdown - Alerts 
+                                .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+                                    h6.dropdown-header Notifications
+                                    a.dropdown-item.d-flex.align-items-center(href='#')
+                                        .mr-3
+                                            .icon-circle.bg-info
+                                                i.fas.fa-file-alt.text-white
+                                            .small.text-gray-500 January 2022 
+                                            span.font-weight-bold Project 2 deadline exceeded 
+
+                                    a.dropdown-item.d-flex.align-items-center(href='#')
+                                        .mr-3
+                                            .icon-circle.bg-success
+                                                i.fas.fa-donate.text-white
+                                            .small.text-gray-500 Feb 2022 
+                                            span.font-weight-bold New user added by Boss- Verify!!!
+                                    a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+
+                            // Nav Item - Messages 
+                            li.nav-item.dropdown.no-arrow.mx-1
+                                a.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                    i.fas.fa-envelope.fa-fw
+                                    // Counter - Messages 
+                                    span.badge.badge-danger.badge-counter 2
+                                // Dropdown - Messages 
+                                .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='messagesDropdown')
+                                    
+                                    h6.dropdown-header Messages
+                                    a.dropdown-item.d-flex.align-items-center(href='#')
+                                        .dropdown-list-image.mr-3
+                                            img.rounded-circle(src='img/undraw_profile_1.svg' alt='...')
+                                            .status-indicator.bg-success
+                                        .font-weight-bold
+                                            .text-truncate Sir, can u change the review date?
+                                            .small.text-gray-500 Nithin. 28m
+
+                                    a.dropdown-item.d-flex.align-items-center(href='#')
+                                        .dropdown-list-image.mr-3
+                                            img.rounded-circle(src='img/undraw_profile_2.svg' alt='...')
+                                            .status-indicator
+                                        .font-weight-bold
+                                            .text-truncate Sir , new project update completed.
+                                            .small.text-gray-500 Karthika· 1d
+                                    a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages 
+                            .topbar-divider.d-none.d-sm-block
+
+                            // Nav Item - User Information 
+                            li.nav-item.dropdown.no-arrow
+                                a.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')#userDropdown
+                                    span.mr-2.d-none.d-lg-inline.text-gray-600.small #{user.name}
+                                    img.img-profile.rounded-circle(src='img/undraw_profile.svg')
+
+                                // Dropdown - User Information 
+                                .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
+                                    
+                                    a.dropdown-item(href='#')
+                                        i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-800 Profile
+                                    a.dropdown-item(href='#')
+                                        i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-800 Settings
+                                    a.dropdown-item(href='#')
+                                        i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-800 Activity Log
+                                    .dropdown-divider
+                                    a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
+                                        i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-800 Logout
+                    // End of Topbar 
+
+                    // Portfolio Grid
+                    section.page-section.bg-light#portfolio
+                        .container
+                            .text-center
+                                h2.section-heading.text-uppercase Profiles
+                                h3.section-subheading.text-muted Quick Search On Projects
+    
+                            .row
+                                 each user in users
+                                    .col-lg-4.col-sm-6.mb-4
+                                        // Portfolio item 1
+                                        .portfolio-item
+                                            .portfolio-caption
+                                                .portfolio-caption-heading #{user.name}
+                                                a.portfolio-link(data-bs-toggle='modal' href='#portfolio-modal')
+                                                    .portfolio-hover
+                                                        .portfolio-hover-content
+                                                            i.fas.fa-plus.fa-2x(style='color:#2f9481')
+                                                            br
+
+                                                .portfolio-caption-subheading.text-muted #{user.role}
+                                                //Portfolio Modal
+                                                .portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')#portfolio-modal
+                                                    .modal-dialog
+                                                        .modal-content
+                                                            .close-modal(data-bs-dismiss='modal')
+                                                                img(src='assets/img/close-icon.svg' alt='Close modal')
+                                                            .container
+                                                                .row.justify-content-center
+                                                                    .col-lg-8
+                                                                        .modal-body
+                                                                            // Project details
+                                                                            h2.text-uppercase #{user.name}
+                                                                            p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
+                                                                            img.img-fluid.d-block.mx-auto(src='assets/img/Boy1.png' alt='...' width='300' height='400')
+                                                                            p Has had 5 years of experience and excellence in performing duties.
+                                                                            ul.list-inline
+                                                                                li
+                                                                                    strong Projects:
+                                                                                    li Workflow Management System-Abbot
+                                                                                    li Password unlocking using IoT
+                                                                                    li Home automation using bluetooth
+                                                                                    li Hand gesture                     
+                        
+        // Footer
+        footer.footer.py-4
+            .container
+                .row.align-items-center
+                    .col-lg-4.text-lg-start Copyright &copy; Ergon 2021
+                    .col-lg-4.my-3.my-lg-0
+                        a.btn.btn-dark.btn-social.mx-2(href='#!')
+                            i.fab.fa-twitter
+                        a.btn.btn-dark.btn-social.mx-2(href='#!')
+                            i.fab.fa-facebook-f
+                        a.btn.btn-dark.btn-social.mx-2(href='#!')
+                            i.fab.fa-linkedin-in
+                    .col-lg-4.text-lg-end
+                        a.link-dark.text-decoration-none.me-3(href='#!') Privacy Policy
+                        a.link-dark.text-decoration-none(href='#!') Terms of Use
+
+        //Logout modal
+        .modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')#logoutModal
+            
+            .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5.modal-title#exampleModalLabel Ready to Leave?
+                    button.close(type='button' data-dismiss='modal' aria-label='çlose')
+                        span(aria-hidden='true')
+                .modal-body Select 'Logout' below if you are ready to end your current session.
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    a.btn.btn-info(href='../../login') Logout
+
+        // Bootstrap core JS
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js')
+        // Core theme JS
+        script(src='js/scripsts.js')
+        script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
