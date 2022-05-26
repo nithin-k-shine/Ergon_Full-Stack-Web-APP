@@ -14,5 +14,5 @@ router.get('/users',authController.protect,viewsController.users);
 router.get('/services',viewsController.services);
 router.get('/register',viewsController.register);
 router.get('/project/:slug/members',authController.protect,viewsController.members);
-router.get('/login',viewsController.login,authController.protect,viewsController.projects);
+router.get('/login',viewsController.login);
 module.exports = router;

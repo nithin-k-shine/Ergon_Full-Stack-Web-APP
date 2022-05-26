@@ -1,4 +1,4 @@
-const User = require('./../models/UserModel');
+const User = require('../models/UserModel');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
@@ -43,23 +43,26 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            return next(
+            
                 res
                     .status(400)
                     .json({
                         status: 'error',
                         message: 'Invalid email or password'
-                    }));
+                    })
+            return;
         }
-        const user = await User.findOne({ email: email }).select('+password')
+        const user = await User.findOne({email}).select('+password');
+        //console.log(user._name);
         //const correct = user.correctPassword(password,user.password);
         if (!user || !(await user.PasswordCheck(password, user.password))) {
             res
                 .status(401)
                 .json({
                     status: 'error',
-                    message: 'Invalid email or password'
+                    message: 'Incorrect email or password'
                 });
+            return;
         }
          const token = createtoken(user._id)
         // res
@@ -92,7 +95,7 @@ exports.login = async (req, res) => {
             .status(400)
             .json({
                 status: err,
-                message: 'Invalid email or password'
+                message: 'Invalid email or password. ERROR!'
             });
     }
 }
